@@ -3,7 +3,7 @@
 ### 1. Instalar MSYS2
 
 - Descarga e instala MSYS2 desde [https://www.msys2.org/](https://www.msys2.org/).
-- Abre la terminal **MSYS2 MinGW 64-bit** (o 32-bit si tu sistema es de 32 bits).
+- Abre la terminal **MSYS2 MinGW 64-bit** .
 
 ### 2. Actualizar el entorno y el gestor de paquetes
 
