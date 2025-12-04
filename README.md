@@ -1,6 +1,68 @@
+## Guía de instalación y compilación desde cero en MSYS2 MinGW (Windows)
+
+### 1. Instalar MSYS2
+
+- Descarga e instala MSYS2 desde [https://www.msys2.org/](https://www.msys2.org/).
+- Abre la terminal **MSYS2 MinGW 64-bit** (o 32-bit si tu sistema es de 32 bits).
+
+### 2. Actualizar el entorno y el gestor de paquetes
+
+```bash
+pacman -Syu
+# Cierra la terminal si te lo pide y vuelve a abrir MSYS2 MinGW 64-bit
+pacman -Syu
+```
+
+### 3. Instalar todas las herramientas y librerías necesarias
+
+```bash
+pacman -S --needed base-devel \
+	mingw-w64-x86_64-toolchain \
+	mingw-w64-x86_64-pkg-config \
+	mingw-w64-x86_64-SDL2 \
+	mingw-w64-x86_64-SDL2_image \
+	mingw-w64-x86_64-libpng \
+	mingw-w64-x86_64-libjpeg-turbo \
+	mingw-w64-x86_64-libogg \
+	mingw-w64-x86_64-libvorbis
+```
+
+> Si quieres soporte para MT-32/FluidSynth (audio especial), instala también:
+
+```bash
+pacman -S mingw-w64-x86_64-munt mingw-w64-x86_64-fluidsynth
+```
+
+### 4. Compilar el proyecto
+
+Desde la raíz del proyecto, ejecuta:
+
+```bash
+./configure --prefix=/mingw64
+make -j$(nproc)
+```
+
+> Si existe el script `./tools/build_mingw.sh`, puedes usarlo para automatizar el proceso.
+
+### 5. Colocar los datos del juego
+
+- Copia los archivos de datos originales en la carpeta `bin/data/` (por ejemplo, `ATRE.PAK`, etc.).
+- Asegúrate de tener el archivo de configuración `opendune.ini` en `bin/`.
+
+### 6. Ejecutar el juego
+
+```bash
+cd bin
+./opendune.exe
+```
+
+---
+
 **Descripción técnica del contenido del repositorio**
 
-Este `README` contiene una guía detallada (orientada a desarrolladores) acerca de qué contiene el repositorio y qué responsabilidad tiene cada carpeta y archivo importante. Está pensado como referencia para navegación y análisis del código, no incluye instrucciones de instalación.
+- Este `README` contiene una guía detallada (orientada a desarrolladores) acerca de qué contiene el repositorio y qué responsabilidad tiene cada carpeta y archivo importante. Está pensado como referencia para navegación y análisis del código, no incluye instrucciones de instalación.
+
+- Agregar carpeta bin, dentro de ella agregar una llamada data y ahi pegar los archivos del juego, en esa mismas carpeta estara el .exe ejecutable para iniciar el juego
 
 **Carpetas y archivos raíz (qué hacen)**
 
